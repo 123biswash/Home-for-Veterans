@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+
+public class DC {
+
+    Veterans v1;
+    Veterans v2;
+    Veterans v3;
+    Donors d;
+    int donations;
+    boolean isSatisfied = false;
+    boolean continueD = false;
+    public DC(){
+    }
+    
+    public static void main(String[] args) {
+       DC run = new DC();
+       //import file  Desktop.getDesktop().open(C:\Users\Biswash\Documents\hackdc)
+       run.runProgram();        
+    }
+    
+    public void runProgram(){
+       getVeteransProfiles();
+       getDonors();
+       getSatisfaction();
+       //reprintProfile();
+    }
+    
+    public void getSatisfaction(){
+       String update = Prompt.getString("TO HOMELESS VETERAN:How have you used the money?");
+       System.out.println();
+       System.out.println("The Veteran has receieved the donation. One month passes, and he/she has posted an update on how he/she has used the money!");
+       System.out.println("This is how he/she has used the money: " + update);
+       int u = Prompt.getInt("TO DONOR: Are you satisfied with the update and with how he/she used your donation? (1 for yes, 2 for no)");
+       if (u == 1){
+         isSatisfied = false;
+       if (isSatisfied = true){
+          u = Prompt.getInt("Would you like to continue donating? (1 for yes, 2 for no)");
+          if (u == 1)
+            continueD = true;
+       }
+       if (continueD){
+          d.runProgram();
+          getSatisfaction();
+       }
+       else{
+          System.out.println("Thank you for your donations");
+       }
+       }
+       else{
+          System.out.println("Thank you for your feedback."); 
+       }
+    }
+   /* public void  reprintProfile(){
+       int a = d.numberNeed;
+       int b = v1.getNeedsNum();      //System.out.println(v1.needsNum);
+       /*
+       //for (int y = 0; y < v1.needsNum; y++){
+
+       //}
+       System.out.println(d.numberNeed);
+       for ( int y = 0; y < v1.needsNum; y++){
+         if ((y+1) == d.numberNeed){
+            
+            //v1.needsMoneyArray[y] = v1.needsMoneyArray[y] - d.donations; 
+         }
+        }
+       System.out.println("Updated Profile");
+      //v1.printProfile();
+      
+      */
+    
+    
+    public void getVeteransProfiles(){
+        Veterans v1 = new Veterans();
+        v1.runProgram();
+    }
+    
+    public void getDonors(){
+     d = new Donors();
+     d.runProgram();
+    }
+    
+}
+
+    
+    
+
+    
+    
+    
+    
