@@ -1,0 +1,54 @@
+import java.util.Scanner;
+//import IO package
+
+public class Donors {
+    Veterans v1;
+    Veterans v2;
+    Veterans v3;
+    int donations;
+    int numberNeed;
+    
+    public Donors(){
+    }
+    
+    public static void main(String[] args) {
+       Donors run = new Donors();
+       //import file  Desktop.getDesktop().open(C:\Users\Biswash\Documents\hackdc)
+       run.runProgram();        
+    }
+    
+    public void runProgram(){
+        //getVeteransProfiles();
+      inputAmount();
+    }
+    
+    
+    public void inputAmount(){
+        numberNeed = Prompt.getInt("TO DONOR: Which need do you want to donate to?");
+        donations = Prompt.getInt("TO DONOR: Enter the amount you want to donate");
+    }
+    
+    public void getVeteransProfiles(){
+        v1 = new Veterans();
+        v1.runProgram();
+        v2 = new Veterans();
+        v2.runProgram();
+        v3 = new Veterans(); 
+        v3.runProgram();
+        
+        v1.printProfile();
+        System.out.println();
+        v2.printProfile();
+        System.out.println();
+        v3.printProfile();
+    }
+    
+}
+
+    
+    
+
+    
+    
+    
+    
