@@ -1,0 +1,103 @@
+/*adopt a homeless person,
+    you get to donate a certain amount, you are now invested in their success as a donor,
+    you put your plan online like a timeline of things he/she wants to accomplish, people will step up to help you, you owe them updates
+    the types of updates dictates the type of money the homeless person will get b/c you are more inclined to invest in someone who will give you updates that are satisfactory
+     
+    VA Validates homeless veterans users
+      
+    standardize:
+       the type of profiles there can be.
+       the type of updates there are.
+    */
+
+import java.util.Scanner;
+
+public class Veterans {
+    String vaNumber;
+    String infileName = "vaID.txt";
+    String name;
+    int needsNum;
+    boolean isAVet = true;
+    String[]needsArray;
+    int []needsMoneyArray;
+    boolean isDonorSatisfied = false;
+    
+    public Veterans(){   
+        
+    }
+ 
+    public static void main(String[] args) {
+        Veterans run = new Veterans(); 
+        run.runProgram();
+    }
+    
+    public void runProgram(){
+       inputProfile();  
+       if (isAVet){
+          getNeeds();
+          printProfile();
+       }
+       else{
+         System.out.println("You are not authorized - please enter a legit VA ID.");   
+       }
+    }
+    
+    public void printProfile(){
+        System.out.println("Name: " + name);
+        for (int a = 0; a < needsNum; a++){
+            System.out.println("Need " + (a+1) + ": " + needsArray[a] + " (Cost: $" + needsMoneyArray[a] + ")");
+        }
+    }
+    
+    public void getNeeds(){
+        needsNum = Prompt.getInt("How many needs do you have? (Min: 1, Max:10)", 1, 10);
+        needsArray = new String[needsNum];
+        needsMoneyArray = new int[needsNum];
+        System.out.println("Enter your needs in chronological order");
+        for ( int a = 0; a < needsNum; a++){
+           needsArray[a] = Prompt.getString("Enter your Need Number " + (a + 1));
+           needsMoneyArray[a] = Prompt.getInt("How much money will you need for this need? (in dollars)");
+        }
+    }
+    
+    public int getNeedsNum(){
+      return needsNum; 
+    }
+      
+    
+    public void inputProfile(){
+       vaNumber = Prompt.getString("Enter VA Number");
+       Scanner infile;
+       infile = OpenFile.openToRead(infileName);
+       String str = "";
+       boolean nameFound = false;
+       while (infile.hasNext()){
+           str = infile.next() + " ";
+           if (str.startsWith(vaNumber + " " )) {
+               nameFound = true;
+           }
+       }
+       if (nameFound){
+           name = Prompt.getString("Enter your name:");
+       }
+       else {           isAVet = false;
+       }
+       
+    }
+    public String toString ()
+    {
+      //build string to write to file
+      return "Name: " + name;
+    }
+    
+    //make a method to write to file using String toString
+    
+}
+
+    
+    
+
+    
+    
+    
+    
